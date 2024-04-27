@@ -1,0 +1,42 @@
+.user-profile {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    
+  }
+  
+  .user-profile h1 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+  }
+  
+  .user-detail {
+    margin-bottom: 15px;
+  }
+  
+  .user-detail>label {
+    display: block;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .user-detail>span {
+    display: block;
+    padding: 8px;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+  }
+  
+  .user-detail>span.mobile {
+    color: #007bff;
+  }
+  
+  .user-detail>span.email {
+    color: #28a745;
+  }
+  

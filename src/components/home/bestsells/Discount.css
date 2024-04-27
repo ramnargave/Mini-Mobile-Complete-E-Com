@@ -1,0 +1,29 @@
+
+:root{
+    --dark-color: #3074f0;
+    --primary-color: #f7c9d2;
+    --light-color: #f5f5f5;
+    --sucess-color: #a7acb3;
+}
+.main_btn{
+    background: var(--dark-color);
+    border: none;
+    border-radius: 2px;
+    color: white;
+    transition: 0.5s;
+    border: 2px solid transparent;
+}
+.main_btn:hover{
+   transition: 0.3s ease-in-out;
+   background: var(--light-color);
+   color: #000;
+   border: 2px solid var(--dark-color);
+   transform: scale(1.05);
+   box-shadow: 1px 6px 10px -1px rgb(116, 116, 116);
+}
+.Discount{
+    background-color: rgb(252, 8, 8);
+}
+.Discount h1{
+    font-weight: 600;
+}

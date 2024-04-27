@@ -1,2 +1,1 @@
-# Mini-Mobile-Complete-E-Com
- 
+# React setup Project

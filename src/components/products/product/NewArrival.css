@@ -1,0 +1,30 @@
+:root{
+    --dark-color: #3074f0;
+    --primary-color: #f7c9d2;
+    --light-color: #f5f5f5;
+    --sucess-color: #a7acb3;
+}
+
+.NewArrival_col1{
+   /* width: 70%; */
+   background: var(--light-color);
+   padding: 2rem 2rem 0 2rem;
+}
+/* .NewArrival_col1 img{
+    width: 70%;
+} */
+.Arrivals_main{
+    border: 2px solid #f1f1f1;
+    margin: 0.8rem;
+    padding: 1rem 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.Arrivals_col1 img{
+    width: 120px;
+    /* background: var(--light-color); */
+    padding: 0.7rem;
+}
+.new-arrival-side-small{
+    background-color: white;
+}
