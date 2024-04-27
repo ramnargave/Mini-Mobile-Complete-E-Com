@@ -26,7 +26,7 @@ import SellerLogin from "./components/sellerlogin/SellerLogin";
 import DashboardTab from "./components/dashboard/DashboardTab";
 import AdminDashboard from "./components/dashboard/Admin/AdminDashboard";
 import MyState from "./components/myContext/MyState";
-// import UpdateProduct from "./updateproduct/UpdateProduct";
+import UpdateProduct from "./components/products/updateproducts/UpdateProducts";
 
 
 function App() {
@@ -73,7 +73,7 @@ function App() {
       {/* <Route path="/dashboard" element={<Dashboard  />}/> */}
       <Route path="/sellerdashboard" element={<DashboardTab  />}/>
       <Route path="/admindashboard" element={<AdminDashboard/>}/>
-      {/* <Route path="/updateproduct" element={<UpdateProduct/>}/> */}
+      <Route path="/updateproducts" element={<UpdateProduct/>}/>
     </Routes>
     <NewsLetter/>
     </BrowserRouter>

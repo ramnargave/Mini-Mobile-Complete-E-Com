@@ -61,7 +61,7 @@ function DashboardTab() {
       useEffect(() => {
         const filterSeller = () => {
           const data = order.filter((p)=>p.product.uid === loggeduser[0].uid,);
-          console.log(data)
+        //   console.log(data)
           setFilterOrder(data)
         }
     

@@ -187,6 +187,7 @@ const Addproducts = () => {
               <option >3 Month</option>
               <option >6 Month</option>
               <option >1 Year</option>
+              <option > No Warranty</option>
             </select>
             <label>Image</label>
             <input onChange={handleProductImg} type="file" />

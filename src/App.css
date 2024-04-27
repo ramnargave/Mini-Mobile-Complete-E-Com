@@ -80,6 +80,9 @@
 /* .jjj{
     border: 1px solid red;
 } */
+.kkkk{
+    border: 1px solid red;
+}
 
 @media (max-width: 768px) {
     .Home-main-main-main-cont{
