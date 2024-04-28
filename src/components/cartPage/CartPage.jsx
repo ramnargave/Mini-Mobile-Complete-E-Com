@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import './CartPage.css'
-import { collection, deleteDoc, doc, getDocs, query, updateDoc, where } from 'firebase/firestore';
+import { addDoc, collection, deleteDoc, doc, getDocs, query, where } from 'firebase/firestore';
 import { auth, db } from '../firebase/Firebase';
 import { useEffect, useState } from 'react';
 // import CartCard from './CartCard';
@@ -42,7 +42,7 @@ function CartPage() {
 
 
     //   ye cart ke liye ki cart me kitne item hai or items show karane ke liye
-    const [cartdata, setcartdata] = useState([]);
+    const [product, setProduct] = useState([]);
     if (loggeduser) {
         const getcartdata = async () => {
             const cartArray = [];
@@ -53,8 +53,9 @@ function CartPage() {
                     // console.log(doc.id, " => ", doc.data());
                     cartArray.push({ ...doc.data(), id: doc.id })
                 });
-                setcartdata(cartArray)
+                setProduct(cartArray)
                 // console.log('done')
+                // console.log(cartdata)
             }).catch('Error error error')
 
         }
@@ -62,7 +63,9 @@ function CartPage() {
     }
     // cart end 
 
-
+    // cartdata.forEach((e)=>{
+    //   console.log(e.productid)
+    // })
 
     // const [productquantity, setProductquantity] = useState(cartdata.quantity);
     // console.log(productquantity)
@@ -108,18 +111,59 @@ function CartPage() {
   // const totalPrice = cartdata.reduce((total, item) => total + item.product.discountprice, 0);
   // console.log(totalPrice)
 
+  // console.log(cartdata)
+  // const [filter, setFilter] = useState([])
+  // useEffect(() => {
+  //   const filterSeller = () => {
+  //     const data = cartdata.filter((p) => p.productid === cartdata.productid);
+  //       console.log(data)
+  //     setFilter(data);
+  //   };
+
+  //   filterSeller();
+  // }, []);
+  // const productbuy = () => {
+  //   if(loggeduser){
+
+  // const productbuy = () => {
+  //   if(loggeduser){
+
+  //     addDoc(collection(db, "buy"), {
+  //       product, quantity: 1,
+  //       customername: loggeduser[0].username,
+  //       customeremail: loggeduser[0].email,
+  //       customerphonenumber: loggeduser[0].phonenumber,
+  //       customeraddress: loggeduser[0].addressLine1,
+  //       customerpincode: loggeduser[0].pincode,
+  //       customerstate: loggeduser[0].state,
+  //       customercity: loggeduser[0].city,
+  //       status: "panding",
+  //       ordertime: new Date().getTime(),
+  //       customeruid: loggeduser[0].uid,
+  //   }).then(() => {
+  //       window.alert('success fully buy');
+
+  //   }).catch(() => window.alert("error"));
+  //   }
+  //   else{
+  //     alert("Please login to buy")
+  //   }
+  // }
+
+
+
   return (
     <div className='cart-main-main-cont'>
-    { cartdata.length != 0 ?  
+    { product.length != 0 ?  
      < >
      <div className=" bg-gray-100 pt-5 " >
        <h1 className="mb-10 text-center text-2xl font-bold">Cart Items</h1>
        <div className="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0 ">
          <div className="rounded-lg md:w-2/3 ">
-           {cartdata.map((item, index) => (
+           {product.map((item, index) => (
             //  const { title, price, description, imageUrl } = item;
                <>
-               <div className="justify-between mb-6 rounded-lg border  drop-shadow-xl bg-white p-6 sm:flex  sm:justify-start" >
+               <div  className="justify-between mb-6 rounded-lg border  drop-shadow-xl bg-white p-6 sm:flex  sm:justify-start" >
                  <img src={item.product.productimage} alt="product-image" className="w-full rounded-lg sm:w-40" />
                  <div className="sm:ml-4 sm:flex sm:w-full sm:justify-between">
                    <div className="mt-5 sm:mt-0">
@@ -144,7 +188,7 @@ function CartPage() {
          <div className="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3" >
            <div className="mb-2 flex justify-between">
              <p className="text-gray-700" >Subtotal</p>
-             <p className="text-gray-700" >₹ {cartdata.map(item => parseInt(item.product.discountprice.replace(/[^\d.-]/g, ''), 10)).reduce((total, value) => total + value, 0 )}</p>
+             <p className="text-gray-700" >₹ {product.map(item => parseInt(item.product.discountprice.replace(/[^\d.-]/g, ''), 10)).reduce((total, value) => total + value, 0 )}</p>
            </div>
            <div className="flex justify-between">
              <p className="text-gray-700" >Shipping</p>
@@ -154,7 +198,7 @@ function CartPage() {
            <div className="flex justify-between mb-3">
              <p className="text-lg font-bold" >Total</p>
              <div className>
-               <p className="mb-1 text-lg font-bold" >₹ {cartdata.map(item => parseInt(item.product.discountprice.replace(/[^\d.-]/g, ''), 10)).reduce((total, value) => total + value, 0 )}</p>
+               <p className="mb-1 text-lg font-bold" >₹ {product.map(item => parseInt(item.product.discountprice.replace(/[^\d.-]/g, ''), 10)).reduce((total, value) => total + value, 0 )}</p>
              </div>
            </div>
            <button  type="button" className="focus:outline-none w-full text-white bg-violet-600 hover:bg-violet-800  outline-0 font-medium rounded-lg text-sm px-5 py-2.5 ">Buy Now</button>

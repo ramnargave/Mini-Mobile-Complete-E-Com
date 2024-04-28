@@ -27,6 +27,7 @@ import DashboardTab from "./components/dashboard/DashboardTab";
 import AdminDashboard from "./components/dashboard/Admin/AdminDashboard";
 import MyState from "./components/myContext/MyState";
 import UpdateProduct from "./components/products/updateproducts/UpdateProducts";
+import MyOrder from "./components/order/MyOrder";
 
 
 function App() {
@@ -74,6 +75,7 @@ function App() {
       <Route path="/sellerdashboard" element={<DashboardTab  />}/>
       <Route path="/admindashboard" element={<AdminDashboard/>}/>
       <Route path="/updateproducts" element={<UpdateProduct/>}/>
+      <Route path="/myorder" element={<MyOrder/>}/>
     </Routes>
     <NewsLetter/>
     </BrowserRouter>

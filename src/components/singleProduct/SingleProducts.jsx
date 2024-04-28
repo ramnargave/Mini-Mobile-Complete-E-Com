@@ -15,6 +15,7 @@ function SingleProducts({ products }) {
   const { id } = useParams();
   const [product, setProduct] = useState({});
   const [relatedProducts, setRelatedProducts] = useState([]);
+
   useEffect(() => {
     const filterProduct = products.find((p) => p.id === id);
     setProduct(filterProduct || {});
@@ -29,6 +30,7 @@ function SingleProducts({ products }) {
   }, [id, products]);
 
 
+//   console.log(product)
 
   // user login  
 
@@ -77,7 +79,7 @@ function SingleProducts({ products }) {
   const addtofavourite = () => {
     if(loggeduser){
       addDoc(collection(db, `favourite-${loggeduser[0].uid}`), {
-        product, quantity: 1
+        product, quantity: 1, productid: id
     }).then(() => {
         window.alert('Product added to favourite list');
 

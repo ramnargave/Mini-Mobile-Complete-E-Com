@@ -270,9 +270,9 @@ function Header() {
       {/* profile Slider  */}
 
       <div className={profile ? "profile-slider-container" : "profile-slider-container-hide"}>
-        <div onClick={()=> setProfile(false)}  className="profile-slider-small-div">
+        <Link to={'/myorder'} onClick={()=> setProfile(false)}  className="profile-slider-small-div">
           My Order
-        </div>
+        </Link>
         <Link to={'/userprofile'} onClick={()=> setProfile(false)} className="profile-slider-small-div">
           My Profile
         </Link>

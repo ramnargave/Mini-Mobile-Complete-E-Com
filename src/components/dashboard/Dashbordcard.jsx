@@ -82,7 +82,7 @@ function Dashbordcard() {
             <th scope="row" className="px-6 py-4 font-medium text-black whitespace-nowrap">
               <img className='w-16' src={p.productimage} alt="img" />
             </th>
-            <td className="px-6 py-4 text-black">{p.producttitle}</td>
+            <td className="px-6 py-4 text-black">{p.producttitle.slice(0, 35)}</td>
             <td className="px-6 py-4 text-black">{p.discountprice}</td>
             <td className="px-6 py-4 text-black">{p.producttype}</td>
             <td className="px-6 py-4 text-black">{new Date(p.timestamp).toLocaleString()}</td>
