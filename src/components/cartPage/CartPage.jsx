@@ -122,35 +122,39 @@ function CartPage() {
 
   //   filterSeller();
   // }, []);
-  // const productbuy = () => {
-  //   if(loggeduser){
-
-  // const productbuy = () => {
-  //   if(loggeduser){
-
-  //     addDoc(collection(db, "buy"), {
-  //       product, quantity: 1,
-  //       customername: loggeduser[0].username,
-  //       customeremail: loggeduser[0].email,
-  //       customerphonenumber: loggeduser[0].phonenumber,
-  //       customeraddress: loggeduser[0].addressLine1,
-  //       customerpincode: loggeduser[0].pincode,
-  //       customerstate: loggeduser[0].state,
-  //       customercity: loggeduser[0].city,
-  //       status: "panding",
-  //       ordertime: new Date().getTime(),
-  //       customeruid: loggeduser[0].uid,
-  //   }).then(() => {
-  //       window.alert('success fully buy');
-
-  //   }).catch(() => window.alert("error"));
-  //   }
-  //   else{
-  //     alert("Please login to buy")
-  //   }
-  // }
 
 
+  const productbuy = () => {
+    if (loggeduser) {
+      product.forEach((item) => {
+        addDoc(collection(db, "buy"), {
+          product: item.product,
+          quantity: item.quantity,
+          customername: loggeduser[0].username,
+          customeremail: loggeduser[0].email,
+          customerphonenumber: loggeduser[0].phonenumber,
+          customeraddress: loggeduser[0].addressLine1,
+          customerpincode: loggeduser[0].pincode,
+          customerstate: loggeduser[0].state,
+          customercity: loggeduser[0].city,
+          status: "pending",
+          ordertime: new Date().getTime(),
+          customeruid: loggeduser[0].uid,
+        })
+          .then(() => {
+            console.log('Product added to "buy" collection:');
+          })
+          .catch((error) => {
+            console.error('Error adding product to "buy" collection:', error);
+            window.alert("Error occurred while buying the product");
+          });
+      });
+      window.alert('Successfully bought all products');
+    } else {
+      alert("Please login to buy");
+    }
+  };
+  
 
   return (
     <div className='cart-main-main-cont'>
@@ -163,7 +167,7 @@ function CartPage() {
            {product.map((item, index) => (
             //  const { title, price, description, imageUrl } = item;
                <>
-               <div  className="justify-between mb-6 rounded-lg border  drop-shadow-xl bg-white p-6 sm:flex  sm:justify-start" >
+               <div key={item.id} className="justify-between mb-6 rounded-lg border  drop-shadow-xl bg-white p-6 sm:flex  sm:justify-start" >
                  <img src={item.product.productimage} alt="product-image" className="w-full rounded-lg sm:w-40" />
                  <div className="sm:ml-4 sm:flex sm:w-full sm:justify-between">
                    <div className="mt-5 sm:mt-0">
@@ -201,7 +205,7 @@ function CartPage() {
                <p className="mb-1 text-lg font-bold" >₹ {product.map(item => parseInt(item.product.discountprice.replace(/[^\d.-]/g, ''), 10)).reduce((total, value) => total + value, 0 )}</p>
              </div>
            </div>
-           <button  type="button" className="focus:outline-none w-full text-white bg-violet-600 hover:bg-violet-800  outline-0 font-medium rounded-lg text-sm px-5 py-2.5 ">Buy Now</button>
+           <button  type="button" onClick={productbuy} className="focus:outline-none w-full text-white bg-violet-600 hover:bg-violet-800  outline-0 font-medium rounded-lg text-sm px-5 py-2.5 ">Buy Now</button>
 
            {/* <Modal  /> */}
            {/* <Modal
