@@ -83,6 +83,27 @@
 .kkkk{
     border: 1px solid red;
 }
+.sellerdashboarddontacces{
+    margin-top: 75px;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.admindashboarddontacces{
+    margin-top: 75px;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.addproductdontacee{
+    margin-top: 75px;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
 
 @media (max-width: 768px) {
     .Home-main-main-main-cont{

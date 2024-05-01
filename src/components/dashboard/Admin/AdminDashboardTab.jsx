@@ -99,19 +99,12 @@ function AdminDashboardTab() {
 
 
     // const context = useContext(myContext)
-    // const { mode } = context
-    let [isOpen, setIsOpen] = useState(false)
 
-    function closeModal() {
-        setIsOpen(false)
-    }
-
-    function openModal() {
-        setIsOpen(true)
-    }
     return (
         <>
-            <div className="container mx-auto  dashboard-main-main-cont">
+        {loggeduser && loggeduser[0].roll == "admin" ? (
+            <> 
+ <div className="container mx-auto  dashboard-main-main-cont">
                 <div className="tab container mx-auto ">
                     <Tabs defaultIndex={0} className=" " >
                         <TabList className="md:flex md:space-x-8 bg-  grid grid-cols-2 text-center gap-4   md:justify-center mb-10 ">
@@ -412,6 +405,15 @@ function AdminDashboardTab() {
                     </Tabs>
                 </div>
             </div>
+            </>
+        ) : (
+            <>
+            <div className="admindashboarddontacces">
+            <h1>Dont Have acceess</h1>
+                    </div>
+            </>
+        ) }
+           
         </>
     )
 }

@@ -60,6 +60,7 @@ function MyState(props) {
                setCity('');
                setState('');
                setTimeout(() => {
+                setErrormsg("");
                    setSuccessmsg("");
                    window.location.href = '/login'
                 }, 2000);
@@ -70,9 +71,15 @@ function MyState(props) {
            if(error.message == 'Firebase: Error (auth/invalid-email).')
            {
                setErrormsg("Invalid Email");
+               setTimeout(() => {
+                setErrormsg("");
+               }, 1000);
            }
            if(error.message == 'Firebase: Error (auth/email-already-in-use).'){
                setErrormsg("Email already in use");
+               setTimeout(() => {
+                setErrormsg("");
+               }, 1000);
            }
        })
       
@@ -108,6 +115,9 @@ function MyState(props) {
         if(error.message == 'Firebase: Error (auth/invalid-credential).')
         {
             setErrormsg("Incorrect email and password");
+            setTimeout(() => {
+              setErrormsg("")
+            }, 1000);
         }
         if(error.message == 'Firebase: Error (auth/user-not-found).'){
             setErrormsg("Email not found");

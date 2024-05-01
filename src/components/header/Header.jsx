@@ -142,7 +142,7 @@ function Header() {
         </div>
         <div className="navbar-mid-div">
           <Link to={'/'} className="navbar-mid-div-contant">Home</Link>
-          <Link to={'/allproducts'} className="navbar-mid-div-contant">Products</Link>
+          <Link to={'/allproducts'} className="navbar-mid-div-contant">All Products</Link>
           <Link to={'/about'} className="navbar-mid-div-contant">Abouts</Link>
           <div className="navbar-mid-div-contant">Service</div>
           <Link to={'/contact'} className="navbar-mid-div-contant">Contact</Link>
@@ -199,7 +199,7 @@ function Header() {
             />
           </form>
           <div className="pop-search-bar-div-icon">
-            <SearchIcon />
+            <SearchIcon onClick={handleSubmit} />
           </div>
           <div
             className="pop-search-bar-x-div"
@@ -254,7 +254,7 @@ function Header() {
           <Link to={'/'} className="navbar-mid-div-contant">Home</Link>
         </div>
         <div className="menu-small-div">
-          <Link to={'/allproducts'} className="navbar-mid-div-contant">Products</Link>
+          <Link to={'/allproducts'} className="navbar-mid-div-contant">All Products</Link>
         </div>
         <div className="menu-small-div">
           <Link to={'/about'} className="navbar-mid-div-contant">Abouts</Link>
@@ -265,6 +265,8 @@ function Header() {
         <div className="menu-small-div">
           <Link to={'/contact'} className="navbar-mid-div-contant">Contact</Link>
         </div>
+        <div className="menu-small-div">{ loggeduser && loggeduser[0].roll == "seller" ? <Link to={'/sellerdashboard'} className="navbar-mid-div-contant">Dashboard</Link> :  <Link to={'/sellerlogin'} className="navbar-mid-div-contant">Sell</Link> }</div>
+<div className="menu-small-div">{ loggeduser && loggeduser[0].roll == "admin" ? <Link to={'/admindashboard'} className="navbar-mid-div-contant">AdminDashboard</Link> : "" }</div>
       </div>
 
       {/* profile Slider  */}

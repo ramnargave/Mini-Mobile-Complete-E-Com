@@ -324,7 +324,10 @@ function DashboardTab() {
           </div>
         </div>
       ) : (
-        <h1>Dont Have acees</h1>
+        <div className="sellerdashboarddontacces">
+<h1>Dont Have acceess</h1>
+        </div>
+        
       )}
     </>
   );

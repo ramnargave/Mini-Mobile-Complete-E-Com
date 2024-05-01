@@ -2,6 +2,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif  ;
+
 }
 .navbar-main-main-container{
     width: 100%;
@@ -190,6 +192,8 @@
     background-color: white;
     transition: 0.6s;
     z-index: 10;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif  ;
+
 }
 .menushow-hide{
     position: absolute;
@@ -204,6 +208,8 @@
     background-color: white;
     transition: 0.6s;
     z-index: 9;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif  ;
+
 }
 
 
@@ -216,7 +222,7 @@
     background-color: white;
     position: fixed;
     top: 75px;
-    z-index: 99;
+    /* z-index: 99; */
     right: 10px;
     padding: 6px 40px 11px 20px;
     /* font-size: 36px; */
@@ -226,6 +232,7 @@
     justify-content: space-around;
     opacity: 1;
     transition: 0.6s;
+    z-index: 1;
     
 }
 .profile-slider-container-hide{
@@ -236,15 +243,16 @@
     position: fixed;
     top: 75px;
     z-index: 99;
-    right: 10px;
+    right: -100%;
     padding: 6px 40px 11px 20px;
     /* font-size: 36px; */
     /* line-height: 36px; */
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    opacity: 0;
+    opacity: 1;
     transition: 0.6s;
+    z-index: 1;
 }
 
 .profile-slider-small-div{
@@ -409,36 +417,39 @@
         position: fixed;
         top: 75px;
         left: 0;
-        width: 45%;
-        height: 60vh;
+        width: 90%;
+        height: 100vh;
         /* border: 1px solid rgb(46, 46, 4.6); */
-        display: flex;
+        display: block;
         flex-direction: column;
-        justify-content: space-between;
+        /* justify-content: space-between; */
         background-color: white;
         transition: 0.6s;
         z-index: 10;
+        font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif  ;
     }
     .menushow-hide{
         position: fixed;
         top: 75px;
         left: -100%;
-        width: 45%;
-        height: 60vh;
+        width: 90%;
+        height: 100vh;
         /* border: 1px solid rgb(46, 46, 46); */
-        display: flex;
-        flex-direction: column;
+        display: block;
+        /* flex-direction: column; */
         justify-content: space-between;
         background-color: white;
         transition: 0.6s;
         z-index: 9;
+        font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif  ;
+
     }
     .menu-small-div{
         width: 100%;
         height: 40px;
         /* border: 1px solid green; */
-        background-color: rgb(250, 250, 250);
-        padding-left: 15px;
+        background-color: rgb(255, 255, 255);
+        padding-left: 25px;
         display: flex;
         align-items: center;
     }

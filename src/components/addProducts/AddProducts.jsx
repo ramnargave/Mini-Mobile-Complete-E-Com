@@ -131,7 +131,7 @@ const Addproducts = () => {
 
   return (
     <div className="addproducts-main-container" >
-      {loggeduser && loggeduser[0].roll == "seller" ||loggeduser && loggeduser[0].roll == "admin"  ? (
+      {loggeduser && loggeduser[0].roll == "seller"  ? (
         <div className="addprod-container">
           <form onSubmit={handleAddProduct} className="addprod-form">
             <p>Add Data</p>
@@ -237,7 +237,9 @@ const Addproducts = () => {
           </form>
         </div>
       ) : (
-        <div>You don't have access to add products</div>
+        <div className="addproductdontacee">
+        <h1>You don't have access to add products</h1>
+        </div>
       )}
     </div>
   );
