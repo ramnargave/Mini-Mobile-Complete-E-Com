@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom'
 import './CartPage.css'
-import { addDoc, collection, deleteDoc, doc, getDocs, query, where } from 'firebase/firestore';
-import { auth, db } from '../firebase/Firebase';
-import { useEffect, useState } from 'react';
+import { addDoc, collection, deleteDoc, doc, getDocs, } from 'firebase/firestore';
+import {  db } from '../firebase/Firebase';
+import { useContext,  useState } from 'react';
+import MyContext from '../myContext/MyContext';
 // import CartCard from './CartCard';
 
 
@@ -11,31 +12,9 @@ function CartPage() {
 
 
     // ye dekhne ke liye ki user login hai ya nhi 
-    function GetCurrentUser() {
-        const [user, setUser] = useState("");
-        const usersCollectionRef = collection(db, "users");
-        useEffect(() => {
-          auth.onAuthStateChanged((userlogged) => {
-            if (userlogged) {
-              // console.log(userlogged.email)
-              const getUsers = async () => {
-                const q = query(
-                  collection(db, "users"),
-                  where("uid", "==", userlogged.uid)
-                );
-                // console.log(q);
-                const data = await getDocs(q);
-                setUser(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-              };
-              getUsers();
-            } else {
-              setUser(null);
-            }
-          });
-        }, []);
-        return user;
-      }
-      const loggeduser = GetCurrentUser();
+    const context = useContext(MyContext);
+    const { loggeduser } = context;
+   
 
     //   user end 
 

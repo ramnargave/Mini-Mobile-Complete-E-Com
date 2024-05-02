@@ -28,6 +28,7 @@ import AdminDashboard from "./components/dashboard/Admin/AdminDashboard";
 import MyState from "./components/myContext/MyState";
 import UpdateProduct from "./components/products/updateproducts/UpdateProducts";
 import MyOrder from "./components/order/MyOrder";
+import FilterByCategory from "./components/filterbycategory/FilterByCategory";
 
 
 function App() {
@@ -76,6 +77,7 @@ function App() {
       <Route path="/admindashboard" element={<AdminDashboard/>}/>
       <Route path="/updateproducts" element={<UpdateProduct/>}/>
       <Route path="/myorder" element={<MyOrder/>}/>
+      <Route path='/filterbycateory/:category' element={<FilterByCategory/>}/>
     </Routes>
     <NewsLetter/>
     </BrowserRouter>

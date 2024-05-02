@@ -161,12 +161,36 @@ function MyState(props) {
      ////////////////////// Login hai ya nhi check end  ///////////////////////////////////
 
 
+     const [products, setProducts] = useState([]);
+ 
+     useEffect(() => {
+         const getProducts = async () => {
+           try {
+             const productsArray = [];
+             const querySnapshot = await getDocs(collection(db, "products"));
+             querySnapshot.forEach((doc) => {
+               productsArray.push({ ...doc.data(), id: doc.id });
+             });
+             setProducts(productsArray);
+             // console.log(productsArray)
+             // console.log(filterByCategory);
+           } catch (error) {
+             console.error("Error fetching products:", error.message);
+           }
+         };
+         getProducts();
+   
+   
+       }, []);
+
+
 
 
   return (
     <MyContext.Provider value={{
     setEmail, email, setPassword, password, setErrormsg, errormsg, setSuccessmsg, successmsg, handleLogin,
     setUsername, username, setPhonenumber, phonenumber, setAddressLine1, addressLine1, setPincode, pincode, setCity, city, setState, state, handleregister, GetCurrentUser, loggeduser,
+    products, setProducts,
     }}>
     {props.children}
     </MyContext.Provider>

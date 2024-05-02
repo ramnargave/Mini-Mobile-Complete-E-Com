@@ -2,6 +2,7 @@ import './Categ.css'
 import Mobile from './mobile-app.jpeg'
 import Tablet from './ipad.png'
 import Laptop from './laptop-screen.png'
+import { Link } from 'react-router-dom'
 function Category() {
   return (
    <>
@@ -9,42 +10,42 @@ function Category() {
     <div>
     <h2 className='py-3'>Categorys</h2>
     <div className="row gx-0 main_category">
-        <div className="col-md-2 col-4">
+        <Link to={'/filterbycateory/mobile'} className="col-md-2 col-4 jj">
             <div className="home_category text-center">
                 <img src={Mobile} alt="" className="img-fluid" />
                 <h5 className="Category_title">Mobile</h5>
             </div>
-        </div>
+        </Link>
 
-      <div className="col-md-2 col-4">
+      <Link to={'/filterbycateory/ipad'} className="col-md-2 col-4 jj">
             <div className="home_category text-center">
                 <img src={Tablet} alt="" className="img-fluid" />
                 <h5 className="Category_title">Ipad</h5>
             </div>
-        </div>
+        </Link>
 
-      <div className="col-md-2 col-4">
+      <Link to={'/filterbycateory/laptops'} className="col-md-2 col-4 jj">
             <div className="home_category text-center">
                 <img src={Laptop} alt="" className="img-fluid" />
                 <h5 className="Category_title">Category</h5>
             </div>
-        </div>
+        </Link>
 
-      <div className="col-md-2 col-4">
+      <div className="col-md-2 col-4 jj">
             <div className="home_category text-center">
                 <img src="https://th.bing.com/th/id/OIP.to_TlBUYvK-3Jokwki905AHaHa?rs=1&pid=ImgDetMain" alt="" className="img-fluid" />
                 <h5 className="Category_title">Category</h5>
             </div>
         </div>
 
-      <div className="col-md-2 col-4">
+      <div className="col-md-2 col-4 jj">
             <div className="home_category text-center">
                 <img src="https://th.bing.com/th/id/OIP.to_TlBUYvK-3Jokwki905AHaHa?rs=1&pid=ImgDetMain" alt="" className="img-fluid" />
                 <h5 className="Category_title">Category</h5>
             </div>
         </div>
 
-      <div className="col-md-2 col-4">
+      <div className="col-md-2 col-4 jj">
             <div className="home_category text-center">
                 <img src="https://th.bing.com/th/id/OIP.to_TlBUYvK-3Jokwki905AHaHa?rs=1&pid=ImgDetMain" alt="" className="img-fluid" />
                 <h5 className="Category_title">Category</h5>
@@ -63,22 +64,22 @@ function Category() {
         </div>
     <div className="top-ategory-div">
         <div className="top-category-small-div">
-            <div className="top-category-small-samall-div">
+            <Link to={'/filterbycateory/mobile'} className="top-category-small-samall-div">
                 <img src="https://th.bing.com/th/id/OIP.eZE4Y8k9i0MKzDHpisIOiQHaHa?rs=1&pid=ImgDetMain" alt="" />
                 <p>MOBILE</p>
-            </div>
+            </Link>
         </div>
         <div className="top-category-small-div">
-        <div className="top-category-small-samall-div">
+        <Link to={'/filterbycateory/tabletes'} className="top-category-small-samall-div">
                 <img src="https://specificationsplus.com/wp-content/uploads/2022/10/Apple-iPad-Pro-11-2023-Specifications-Plus-1.jpg" alt="" />
                 <p>TABLETES</p>
-            </div>
+            </Link>
         </div>
         <div className="top-category-small-div">
-        <div className="top-category-small-samall-div">
+        <Link to={'/filterbycateory/laptops'} className="top-category-small-samall-div">
                 <img src="https://i5.walmartimages.com/asr/6655ec59-0937-447c-b568-2cb1a9439a1a.c4e3bc14e88886382672ecb92b004078.jpeg" alt="" />
                 <p>LAPTOPS</p>
-            </div>
+            </Link>
         </div>
         <div className="top-category-small-div">
         <div className="top-category-small-samall-div">

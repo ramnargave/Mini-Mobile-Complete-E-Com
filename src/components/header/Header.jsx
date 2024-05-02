@@ -3,41 +3,21 @@ import MenuIcon from "@mui/icons-material/Menu";
 import PersonIcon from "@mui/icons-material/Person";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import SearchIcon from "@mui/icons-material/Search";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import NavLogo from './NavLogo.png'
 import CloseIcon from '@mui/icons-material/Close';
 import { Link, useNavigate,  } from "react-router-dom";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { auth, db } from "../firebase/Firebase";
+import MyContext from "../myContext/MyContext";
 
 function Header() {
  const navigate = useNavigate();
 
+ const context = useContext(MyContext);
+ const { loggeduser } = context;
 
-  const GetCurrentUser = () =>{
-    const [user, setUser] = useState('')
-    const usersCollectionRef = collection(db, 'users')
 
-    // user login hai ya nhi 
-    useEffect(() => {
-    auth.onAuthStateChanged(userlogged=>{
-      if(userlogged){
-        const getUsers = async () => {
-          const q = query(collection(db, 'users'), where('uid','==', userlogged.uid))
-          const data = await getDocs(q);
-          setUser(data.docs.map((doc)=>({...doc.data(),id:doc.id})))
-        }
-        getUsers();
-      }
-      else{
-        setUser(null);
-      }
-    })
-
-    }, [])
-    return user;
-  }
-  const loggeduser  = GetCurrentUser()
   // if(loggeduser){console.log(loggeduser[0])}
 
   // end 
@@ -108,7 +88,6 @@ function Header() {
   }
 
   // cartdeta ki lenth 
-  //  ye me users wale me bhi use kar sakta hu 
   const [cartdata, setcartdata] = useState([]);
     if (loggeduser) {
         const getcartdata = async () => {
