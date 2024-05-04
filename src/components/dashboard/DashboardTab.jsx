@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 // import myContext from '../../../context/data/myContext';
 import { MdOutlineProductionQuantityLimits } from "react-icons/md";
@@ -6,39 +6,17 @@ import { FaUser, FaCartPlus } from "react-icons/fa";
 import { AiFillShopping } from "react-icons/ai";
 import Dashbordcard from "./Dashbordcard";
 import { Link } from "react-router-dom";
-import { collection, getDocs, query, where } from "firebase/firestore";
-import { auth, db } from "../firebase/Firebase";
+import { collection, getDocs, } from "firebase/firestore";
+import {  db } from "../firebase/Firebase";
+import MyContext from "../myContext/MyContext";
 
 function DashboardTab() {
   const [order, setOrder] = useState([]);
   const [filterorder, setFilterOrder] = useState([]);
   const [status, setStatus] = useState("")
 
-  const GetCurrentUser = () => {
-    const [user, setUser] = useState("");
-    const usersCollectionRef = collection(db, "users");
-
-    // user login hai ya nhi
-    useEffect(() => {
-      auth.onAuthStateChanged((userlogged) => {
-        if (userlogged) {
-          const getUsers = async () => {
-            const q = query(
-              collection(db, "users"),
-              where("uid", "==", userlogged.uid)
-            );
-            const data = await getDocs(q);
-            setUser(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-          };
-          getUsers();
-        } else {
-          setUser(null);
-        }
-      });
-    }, []);
-    return user;
-  };
-  const loggeduser = GetCurrentUser();
+  const context = useContext(MyContext);
+  const { loggeduser } = context;
 
   useEffect(() => {
     const getProducts = async () => {

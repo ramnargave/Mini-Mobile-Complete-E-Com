@@ -2,8 +2,8 @@
 import {FaUserTie } from 'react-icons/fa';
 import AdminDashboardTab from './AdminDashboardTab';
 import { useContext, useEffect, useState } from 'react';
-import { collection, getDocs, query, where } from 'firebase/firestore';
-import { auth, db } from '../../firebase/Firebase';
+import { collection, getDocs, } from 'firebase/firestore';
+import {  db } from '../../firebase/Firebase';
 import MyContext from '../../myContext/MyContext';
 // import myContext from '../../../context/data/myContext';
 // import Layout from '../../../components/layout/Layout';
@@ -14,30 +14,8 @@ function AdminDashboard() {
 
 
 
-    const GetCurrentUser = () =>{
-      const [user, setUser] = useState('')
-      const usersCollectionRef = collection(db, 'users')
-  
-      // user login hai ya nhi 
-      useEffect(() => {
-      auth.onAuthStateChanged(userlogged=>{
-        if(userlogged){
-          const getUsers = async () => {
-            const q = query(collection(db, 'users'), where('uid','==', userlogged.uid))
-            const data = await getDocs(q);
-            setUser(data.docs.map((doc)=>({...doc.data(),id:doc.id})))
-          }
-          getUsers();
-        }
-        else{
-          setUser(null);
-        }
-      })
-  
-      }, [])
-      return user;
-    }
-    const loggeduser  = GetCurrentUser();
+    const context = useContext(MyContext);
+    const { loggeduser } = context;
 
     useEffect(() => {
       const getProducts = async () => {

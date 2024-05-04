@@ -164,6 +164,7 @@ const Addproducts = () => {
               <option >Ipad</option>
               <option >TV</option>
               <option >Laptop</option>
+              <option >Watch</option>
             </select>
 
             <label>Brand Name </label>
@@ -212,7 +213,7 @@ const Addproducts = () => {
             <input
               onChange={(e) => setStock(e.target.value)}
               type="text"
-              placeholder="Ram Sotrage"
+              placeholder="Stock"
             />
             <label>MRP</label>
             <input

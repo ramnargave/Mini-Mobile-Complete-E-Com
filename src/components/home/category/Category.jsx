@@ -1,7 +1,10 @@
 import './Categ.css'
-import Mobile from './mobile-app.jpeg'
-import Tablet from './ipad.png'
+import Mobile from './mobile-app.png'
+import Tablet from './tablet.png'
 import Laptop from './laptop-screen.png'
+import SmartWatch from './smartwatch.png'
+import Tv from './smart-tv.png'
+import Headphone from './headphones.png'
 import { Link } from 'react-router-dom'
 function Category() {
   return (
@@ -20,37 +23,37 @@ function Category() {
       <Link to={'/filterbycateory/ipad'} className="col-md-2 col-4 jj">
             <div className="home_category text-center">
                 <img src={Tablet} alt="" className="img-fluid" />
-                <h5 className="Category_title">Ipad</h5>
+                <h5 className="Category_title">Tablets</h5>
             </div>
         </Link>
 
-      <Link to={'/filterbycateory/laptops'} className="col-md-2 col-4 jj">
+      <Link to={'/filterbycateory/headphone'} className="col-md-2 col-4 jj">
+            <div className="home_category text-center">
+                <img src={Headphone} alt="" className="img-fluid" />
+                <h5 className="Category_title">Headphones</h5>
+            </div>
+        </Link>
+
+      <Link to={'/filterbycateory/watch'} className="col-md-2 col-4 jj">
+            <div className="home_category text-center">
+                <img src={SmartWatch} alt="" className="img-fluid" />
+                <h5 className="Category_title">Smart Watch</h5>
+            </div>
+        </Link>
+
+      <Link to={'/filterbycateory/tv'} className="col-md-2 col-4 jj">
+            <div className="home_category text-center">
+                <img src={Tv} alt="" className="img-fluid" />
+                <h5 className="Category_title">Tv</h5>
+            </div>
+        </Link>
+
+      <Link to={'/filterbycateory/laptop'} className="col-md-2 col-4 jj">
             <div className="home_category text-center">
                 <img src={Laptop} alt="" className="img-fluid" />
-                <h5 className="Category_title">Category</h5>
+                <h5 className="Category_title">laptops</h5>
             </div>
         </Link>
-
-      <div className="col-md-2 col-4 jj">
-            <div className="home_category text-center">
-                <img src="https://th.bing.com/th/id/OIP.to_TlBUYvK-3Jokwki905AHaHa?rs=1&pid=ImgDetMain" alt="" className="img-fluid" />
-                <h5 className="Category_title">Category</h5>
-            </div>
-        </div>
-
-      <div className="col-md-2 col-4 jj">
-            <div className="home_category text-center">
-                <img src="https://th.bing.com/th/id/OIP.to_TlBUYvK-3Jokwki905AHaHa?rs=1&pid=ImgDetMain" alt="" className="img-fluid" />
-                <h5 className="Category_title">Category</h5>
-            </div>
-        </div>
-
-      <div className="col-md-2 col-4 jj">
-            <div className="home_category text-center">
-                <img src="https://th.bing.com/th/id/OIP.to_TlBUYvK-3Jokwki905AHaHa?rs=1&pid=ImgDetMain" alt="" className="img-fluid" />
-                <h5 className="Category_title">Category</h5>
-            </div>
-        </div>
 
     </div>
     </div>

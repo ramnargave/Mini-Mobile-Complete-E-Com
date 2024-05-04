@@ -1,7 +1,8 @@
-import { collection, deleteDoc, doc, getDocs, query, where } from "firebase/firestore";
-import { useEffect, useState } from "react";
-import { auth, db } from "../firebase/Firebase";
+import { collection, deleteDoc, doc, getDocs, } from "firebase/firestore";
+import { useContext, useEffect, useState } from "react";
+import {  db } from "../firebase/Firebase";
 import { useNavigate } from "react-router-dom";
+import MyContext from "../myContext/MyContext";
 
 function Dashbordcard() {
     const [products, setProducts] = useState([]);
@@ -9,30 +10,8 @@ function Dashbordcard() {
    const navigate = useNavigate();
 
 
-    const GetCurrentUser = () =>{
-      const [user, setUser] = useState('')
-      const usersCollectionRef = collection(db, 'users')
-  
-      // user login hai ya nhi 
-      useEffect(() => {
-      auth.onAuthStateChanged(userlogged=>{
-        if(userlogged){
-          const getUsers = async () => {
-            const q = query(collection(db, 'users'), where('uid','==', userlogged.uid))
-            const data = await getDocs(q);
-            setUser(data.docs.map((doc)=>({...doc.data(),id:doc.id})))
-          }
-          getUsers();
-        }
-        else{
-          setUser(null);
-        }
-      })
-  
-      }, [])
-      return user;
-    }
-    const loggeduser  = GetCurrentUser()
+   const context = useContext(MyContext);
+   const { loggeduser } = context;
 
 
     useEffect(() => {
