@@ -7,7 +7,7 @@ import MyContext from '../myContext/MyContext';
 
 function Register() {
   const context = useContext(MyContext);
-  const {   setEmail, email, setPassword, password,   setUsername, username, setPhonenumber, phonenumber, setAddressLine1, addressLine1, setPincode, pincode, setCity, city, setState, state, handleregister,
+  const {   setEmail, email, setPassword, password,   setUsername, username, setPhonenumber, phonenumber,  handleregister,
     setErrormsg, errormsg, setSuccessmsg, successmsg, } = context;
   return (
     <>
@@ -44,34 +44,10 @@ function Register() {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-         <input
-          type="text"
-          placeholder="State"
-          value={state}
-          onChange={(e) => setState(e.target.value)}
-          required
-        />
-         <input
-          type="text"
-          placeholder="City/Distric/Town"
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-          required
-        />
-         <input
-          type="number"
-          placeholder="Pincode"
-          value={pincode}
-          onChange={(e) => setPincode(e.target.value)}
-          required
-        />
-          <input
-          type="text"
-          placeholder="Addressline"
-          value={addressLine1}
-          onChange={(e) => setAddressLine1(e.target.value)}
-          required
-        />
+
+
+
+
         <button type="submit">Signup</button>
       </form>
     </div>

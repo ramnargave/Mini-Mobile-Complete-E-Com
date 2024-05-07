@@ -32,7 +32,7 @@ function MyOrder() {
   
     useEffect(() => {
       const filterSeller = () => {
-        const data = oorder.filter((p) => p.customeruid === loggeduser[0].uid);
+        const data = oorder.filter((p) => p.customerInfo.customeruid === loggeduser[0].uid);
         //   console.log(data)
         setMyOrder(data);
       };

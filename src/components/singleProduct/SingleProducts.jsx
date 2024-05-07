@@ -219,9 +219,9 @@ function SingleProducts({ products }) {
                                 { product.stock != 0 ? <>   <button  onClick={()=>addtocart(product)} className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
                                     Add To Cart
                                 </button>
-                                <button  onClick={()=>productbuy(product)} className="flex ml-auto text-white bg-orange-400 border-0 py-2 px-6 focus:outline-none  rounded">
+                                {/* <button  onClick={()=>productbuy(product)} className="flex ml-auto text-white bg-orange-400 border-0 py-2 px-6 focus:outline-none  rounded">
                                     Buy
-                                </button>
+                                </button> */}
                                 <button onClick={addtofavourite} className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
                                     <svg
                                         fill="currentColor"

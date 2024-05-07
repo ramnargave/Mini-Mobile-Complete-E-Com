@@ -243,16 +243,16 @@ function AdminDashboardTab() {
                                                    </td>
                                                  
                                                    <td className="px-6 py-4 text-black " >
-                                                       {p.customername}
+                                                       {p.customerInfo.name}
                                                    </td>
                                                    <td className="px-6 py-4 text-black " >
-                                                       {p.customercity}
+                                                       {p.customerInfo.city}
                                                    </td>
                                                    <td className="px-6 py-4 text-black " >
-                                                       {p.customerpincode}
+                                                       {p.customerInfo.pincode}
                                                    </td>
                                                    <td className="px-6 py-4 text-black " >
-                                                      {p.customerphonenumber}
+                                                      {p.customerInfo.phoneNumber}
                                                    </td>
                                                    <td className="px-6 py-4 text-black " >
                                                        {p.product.shopname}

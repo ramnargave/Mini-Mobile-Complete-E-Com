@@ -4,11 +4,19 @@ import { addDoc, collection, deleteDoc, doc, getDocs, } from 'firebase/firestore
 import {  db } from '../firebase/Firebase';
 import { useContext,  useState } from 'react';
 import MyContext from '../myContext/MyContext';
+import Modal from '../modal/Modal';
+// import Model from '../modal/Modal';
 // import CartCard from './CartCard';
 
 
 
 function CartPage() {
+
+  const [name, setName] = useState("")
+  const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [pincode, setPincode] = useState("")
+  const [phoneNumber, setPhoneNumber] = useState("")
 
 
     // ye dekhne ke liye ki user login hai ya nhi 
@@ -104,34 +112,50 @@ function CartPage() {
 
 
   const productbuy = () => {
-    if (loggeduser) {
-      product.forEach((item) => {
-        addDoc(collection(db, "buy"), {
-          product: item.product,
-          quantity: item.quantity,
-          customername: loggeduser[0].username,
-          customeremail: loggeduser[0].email,
-          customerphonenumber: loggeduser[0].phonenumber,
-          customeraddress: loggeduser[0].addressLine1,
-          customerpincode: loggeduser[0].pincode,
-          customerstate: loggeduser[0].state,
-          customercity: loggeduser[0].city,
-          status: "pending",
-          ordertime: new Date().getTime(),
-          customeruid: loggeduser[0].uid,
-        })
-          .then(() => {
-            console.log('Product added to "buy" collection:');
-          })
-          .catch((error) => {
-            console.error('Error adding product to "buy" collection:', error);
-            window.alert("Error occurred while buying the product");
-          });
-      });
-      window.alert('Successfully bought all products');
-    } else {
-      alert("Please login to buy");
+    if (name === "" || address == "" || pincode == "" || phoneNumber == "" || city == ""){
+      alert("Please fill all the fields")
     }
+
+    const customerInfo = {
+      name: loggeduser[0].username,
+      email: loggeduser[0].email,
+      customeruid: loggeduser[0].uid,
+      address,
+      city,
+      pincode,
+      phoneNumber,
+
+    }
+
+    try {
+      if (loggeduser) {
+        product.forEach((item) => {
+          addDoc(collection(db, "buy"), {
+            product: item.product,
+            quantity: item.quantity,
+
+            customerInfo,
+
+            status: "pending",
+            ordertime: new Date().getTime(),
+            
+          })
+            .then(() => {
+              console.log('Product added to "buy" collection:');
+            })
+            .catch((error) => {
+              console.error('Error adding product to "buy" collection:', error);
+              window.alert("Error occurred while buying the product");
+            });
+        });
+        window.alert('Successfully bought all products');
+      } else {
+        alert("Please login to buy");
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  
   };
   
 
@@ -184,20 +208,22 @@ function CartPage() {
                <p className="mb-1 text-lg font-bold" >₹ {product.map(item => parseInt(item.product.discountprice.replace(/[^\d.-]/g, ''), 10)).reduce((total, value) => total + value, 0 )}</p>
              </div>
            </div>
-           <button  type="button" onClick={productbuy} className="focus:outline-none w-full text-white bg-violet-600 hover:bg-violet-800  outline-0 font-medium rounded-lg text-sm px-5 py-2.5 ">Buy Now</button>
+           {/* <button  type="button" onClick={productbuy} className="focus:outline-none w-full text-white bg-violet-600 hover:bg-violet-800  outline-0 font-medium rounded-lg text-sm px-5 py-2.5 ">Buy Now</button> */}
 
            {/* <Modal  /> */}
-           {/* <Modal
+           <Modal
              name={name}
              address={address}
              pincode={pincode}
+             city={city}
              phoneNumber={phoneNumber}
              setName={setName}
              setAddress={setAddress}
+             setCity={setCity}
              setPincode={setPincode}
              setPhoneNumber={setPhoneNumber}
-             buyNow={buyNow}
-           /> */}
+             buyNow={productbuy}
+           />
          </div>
        </div>
      </div>

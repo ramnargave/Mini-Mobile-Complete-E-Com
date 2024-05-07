@@ -17,15 +17,10 @@ function MyState(props) {
    const [errormsg, setErrormsg] = useState('');
    const [username, setUsername] = useState('');
    const [phonenumber, setPhonenumber] = useState('');
-   // const [address, setAddress] = useState('');
-   const [addressLine1, setAddressLine1] = useState("")
-   const [city, setCity] = useState("")
-   const [state, setState] = useState("")
-   const [pincode, setPincode] = useState("")
  
    const handleregister = async (e) => {
        e.preventDefault();
-        if(email == "" || password == "" || username == "" || phonenumber == "" || addressLine1 == "" || city == "" || state == "" || pincode == "" ){
+        if(email == "" || password == "" || username == "" || phonenumber == ""){
          return alert("plz fill all")
         }
       
@@ -40,10 +35,6 @@ function MyState(props) {
                phonenumber: phonenumber,
                // address: address,
                cart: initialcartvalue,
-               addressLine1: addressLine1,
-               pincode: pincode,
-               state: state,
-               city: city,
                timestamp: new Date().getTime(),
                uid: user.uid,
                roll: "user",
@@ -54,11 +45,6 @@ function MyState(props) {
                setUsername('');
                setPhonenumber('');
                // setAddress('');
-               setAddressLine1("")
-               setPincode("");
-               setErrormsg("");
-               setCity('');
-               setState('');
                setTimeout(() => {
                 setErrormsg("");
                    setSuccessmsg("");
@@ -189,7 +175,7 @@ function MyState(props) {
   return (
     <MyContext.Provider value={{
     setEmail, email, setPassword, password, setErrormsg, errormsg, setSuccessmsg, successmsg, handleLogin,
-    setUsername, username, setPhonenumber, phonenumber, setAddressLine1, addressLine1, setPincode, pincode, setCity, city, setState, state, handleregister, GetCurrentUser, loggeduser,
+    setUsername, username, setPhonenumber, phonenumber,  handleregister, GetCurrentUser, loggeduser,
     products, setProducts,
     }}>
     {props.children}
