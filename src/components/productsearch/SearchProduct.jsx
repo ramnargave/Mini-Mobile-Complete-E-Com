@@ -35,15 +35,34 @@ function SearchProduct() {
     }, []);
 
     useEffect(() => {
-    
       const filterData = () => {
-        const data = products.filter((p)=>p.producttitle.toLowerCase().includes(term.toLowerCase()));
-        console.log(data)
-        setFilterData(data)
-      }
-  
+        const termLower = term.toLowerCase();
+        const data = products.filter((p) => {
+          const productTitleLower = p.producttitle.toLowerCase();
+          const productTypeLower = p.producttype.toLowerCase();
+    
+          // Check if term is found in product title or type
+          const matchesTerm = productTitleLower.includes(termLower) || productTypeLower.includes(termLower);
+    
+          if (!matchesTerm) {
+            // If term is not found in title or type, filter by price
+            const termPrice = parseFloat(termLower);
+            if (!isNaN(termPrice)) {
+              return parseFloat(p.discountprice) >= termPrice;
+            }
+          }
+    
+          return matchesTerm;
+        });
+    
+        console.log(data);
+        setFilterData(data);
+      };
+    
       filterData();
-    }, [term, products])
+    }, [term, products]);
+    
+    
     
 
 

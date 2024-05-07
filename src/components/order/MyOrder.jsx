@@ -2,6 +2,7 @@ import { collection, getDocs,  } from "firebase/firestore";
 import { useContext, useEffect, useState } from "react";
 import {  db } from "../firebase/Firebase";
 import MyContext from "../myContext/MyContext";
+import { Link } from "react-router-dom";
 
 
 function MyOrder() {
@@ -40,12 +41,12 @@ function MyOrder() {
     }, [oorder]);
   return (
 <>
-          <div className=" h-full pt-10">
+          <div className="order-main-cont h-full pt-10">
             
   
                 {myorder.map((p)=>(
                     <>
-                       <div className="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
+                       <Link key={p.product.id} to={`/orderdetail/${p.product.id}`} className=" order-cont mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
                           <div className="rounded-lg md:w-2/3">
                             <div className="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start" >
                               <img src={p.product.productimage} alt="product-image" className="w-full rounded-lg sm:w-40" />
@@ -54,7 +55,7 @@ function MyOrder() {
                                 {/* <h2 className="text-lg font-bold text-gray-900">Order Id:- {p.id}</h2> */}
                                   <h2 className="text-lg font-bold text-gray-900">{p.product.producttitle}</h2>
                                   <p className="mt-1 text-xs text-gray-700" >Order Id:- {p.id}</p>
-                                  {/* <p className="mt-1 text-xs text-gray-700" >Status:- {p.status}</p> */}
+                                  <p className="mt-1 text-xs text-gray-700" >Status:- {p.status}</p>
                                   <p className="mt-1 text-xs text-gray-700" >{p.product.description}</p>
                                   <p className="mt-1 text-xs text-gray-700" >{p.product.discountprice}</p>
                                 </div>
@@ -62,7 +63,7 @@ function MyOrder() {
                             </div>
                           </div>
                         
-                  </div>
+                  </Link>
                     </>
                 ))}
                

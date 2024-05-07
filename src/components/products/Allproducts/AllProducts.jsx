@@ -25,7 +25,7 @@ function AllProducts({products}) {
           <div className="allproducts-price-div">Discount Price {p.discountprice}</div>
           
           <div className="allproducts-star-div"><ReactStars value={p.rating} size={30} edit={false} /></div>
-          <Link to={`/singleproduct/${p.id}`} className="allproducts-addtocard-div"><ShoppingCartIcon /> More Info</Link>
+          <Link to={`/singleproduct/${p.id}`} className="allproducts-addtocard-div"> More Info</Link>
         </div>
       ))}
     </div>

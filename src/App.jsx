@@ -29,6 +29,7 @@ import MyState from "./components/myContext/MyState";
 import UpdateProduct from "./components/products/updateproducts/UpdateProducts";
 import MyOrder from "./components/order/MyOrder";
 import FilterByCategory from "./components/filterbycategory/FilterByCategory";
+import OderDetail from "./components/order/orderdetail/OderDetail";
 
 
 function App() {
@@ -78,6 +79,7 @@ function App() {
       <Route path="/updateproducts" element={<UpdateProduct/>}/>
       <Route path="/myorder" element={<MyOrder/>}/>
       <Route path='/filterbycateory/:category' element={<FilterByCategory/>}/>
+      <Route path="/orderdetail/:id" element={<OderDetail/>}/>
     </Routes>
     <NewsLetter/>
     </BrowserRouter>

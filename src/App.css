@@ -77,11 +77,12 @@
     margin-top: 90px;
 }
 
-/* .jjj{
-    border: 1px solid red;
-} */
-.kkkk{
-    border: 1px solid red;
+.order-main-cont{
+    margin-top: 75px;
+}
+.order-cont{
+    color: black;
+    text-decoration: none;
 }
 .sellerdashboarddontacces{
     margin-top: 75px;
