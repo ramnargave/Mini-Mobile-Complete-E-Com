@@ -21,8 +21,9 @@ function AllProducts({products}) {
           <Link to={`/singleproduct/${p.id}`} className="allproducts-title-div">
   <p>{p.producttitle.length > 50 ? p.producttitle.substring(0, 50) + '...' : p.producttitle}</p>
 </Link>
-          <div className="MRP">MRP. {p.discountprice}</div>
+          <div className="MRP">MRP. <del>{p.discountprice}</del></div>
           <div className="allproducts-price-div">Discount Price {p.discountprice}</div>
+          
           <div className="allproducts-star-div"><ReactStars value={p.rating} size={30} edit={false} /></div>
           <Link to={`/singleproduct/${p.id}`} className="allproducts-addtocard-div"><ShoppingCartIcon /> More Info</Link>
         </div>

@@ -125,7 +125,7 @@ function Header() {
           <Link to={'/about'} className="navbar-mid-div-contant">Abouts</Link>
           <div className="navbar-mid-div-contant">Service</div>
           <Link to={'/contact'} className="navbar-mid-div-contant">Contact</Link>
-          { loggeduser && loggeduser[0].roll == "seller" ? <Link to={'/sellerdashboard'} className="navbar-mid-div-contant">Dashboard</Link> :  <Link to={'/sellerlogin'} className="navbar-mid-div-contant">Sell</Link> }
+          { loggeduser && loggeduser[0].roll == "seller" ? <Link to={'/sellerdashboard'} className="navbar-mid-div-contant">Dashboard</Link> :  <Link to={'/sellerregistion'} className="navbar-mid-div-contant">Sell</Link> }
           { loggeduser && loggeduser[0].roll == "admin" ? <Link to={'/admindashboard'} className="navbar-mid-div-contant">AdminDashboard</Link> : "" }
         </div>
         <div className="navbar-right-div">
@@ -244,7 +244,7 @@ function Header() {
         <div className="menu-small-div">
           <Link to={'/contact'} className="navbar-mid-div-contant">Contact</Link>
         </div>
-        <div className="menu-small-div">{ loggeduser && loggeduser[0].roll == "seller" ? <Link to={'/sellerdashboard'} className="navbar-mid-div-contant">Dashboard</Link> :  <Link to={'/sellerlogin'} className="navbar-mid-div-contant">Sell</Link> }</div>
+        <div className="menu-small-div">{ loggeduser && loggeduser[0].roll == "seller" ? <Link to={'/sellerdashboard'} className="navbar-mid-div-contant">Dashboard</Link> :  <Link to={'/sellerregistion'} className="navbar-mid-div-contant">Sell</Link> }</div>
 <div className="menu-small-div">{ loggeduser && loggeduser[0].roll == "admin" ? <Link to={'/admindashboard'} className="navbar-mid-div-contant">AdminDashboard</Link> : "" }</div>
       </div>
 
