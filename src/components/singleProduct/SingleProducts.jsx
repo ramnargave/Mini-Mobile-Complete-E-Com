@@ -12,6 +12,8 @@ import MyContext from '../myContext/MyContext';
 function SingleProducts({ products }) {
   const context = useContext(MyContext);
   const { GetCurrentUser, loggeduser, } = context;
+
+
   const { id } = useParams();
   const [product, setProduct] = useState({});
   const [relatedProducts, setRelatedProducts] = useState([]);
@@ -32,33 +34,7 @@ function SingleProducts({ products }) {
 
 //   console.log(product)
 
-  // user login  
 
-  // function GetCurrentUser() {
-  //   const [user, setUser] = useState("");
-  //   const usersCollectionRef = collection(db, "users");
-  //   useEffect(() => {
-  //     auth.onAuthStateChanged((userlogged) => {
-  //       if (userlogged) {
-  //         // console.log(userlogged.email)
-  //         const getUsers = async () => {
-  //           const q = query(
-  //             collection(db, "users"),
-  //             where("uid", "==", userlogged.uid)
-  //           );
-  //           // console.log(q);
-  //           const data = await getDocs(q);
-  //           setUser(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-  //         };
-  //         getUsers();
-  //       } else {
-  //         setUser(null);
-  //       }
-  //     });
-  //   }, []);
-  //   return user;
-  // }
-  // const loggeduser = GetCurrentUser();
 
 
   const addtocart = () => {

@@ -6,14 +6,14 @@ import { FaUser, FaCartPlus } from "react-icons/fa";
 import { AiFillShopping } from "react-icons/ai";
 import Dashbordcard from "./Dashbordcard";
 import { Link } from "react-router-dom";
-import { collection, getDocs, } from "firebase/firestore";
+import { collection, doc, getDocs, updateDoc, } from "firebase/firestore";
 import {  db } from "../firebase/Firebase";
 import MyContext from "../myContext/MyContext";
 
 function DashboardTab() {
   const [order, setOrder] = useState([]);
   const [filterorder, setFilterOrder] = useState([]);
-  const [status, setStatus] = useState("")
+  const [status, setStatus] = useState("");
 
   const context = useContext(MyContext);
   const { loggeduser } = context;
@@ -27,7 +27,6 @@ function DashboardTab() {
           productsArray.push({ ...doc.data(), id: doc.id });
         });
         setOrder(productsArray);
-        // console.log(order)
       } catch (error) {
         console.error("Error fetching products:", error.message);
       }
@@ -38,30 +37,20 @@ function DashboardTab() {
   useEffect(() => {
     const filterSeller = () => {
       const data = order.filter((p) => p.product.uid === loggeduser[0].uid);
-      // Logging status for each order
-      data.forEach((order) => {
-        // console.log(order.status);
-        setStatus(order.status)
-      });
       setFilterOrder(data);
     };
-    
-  
     filterSeller();
   }, [order]);
-  
 
-  // const context = useContext(myContext)
-  // const { mode } = context
-//   let [isOpen, setIsOpen] = useState(false);
+  const handleStatusChange = async (orderId, Status) => {
+    try {
+      await updateDoc(doc(db, "buy", orderId), { status: Status });
+      setStatus(Status);
+    } catch (error) {
+      console.error("Error updating status:", error.message);
+    }
+  };
 
-//   function closeModal() {
-//     setIsOpen(false);
-//   }
-
-//   function openModal() {
-//     setIsOpen(true);
-//   }
   return (
     <>
       {loggeduser && loggeduser[0].roll == "seller" ? (
@@ -216,12 +205,18 @@ function DashboardTab() {
                             <td className="px-6 py-4 text-black ">
                               {p.product.discountprice}
                             </td>
-                            <td className="px-6 py-4 text-black">
-                              <select value={p.status}>
-                              <option value="panding">Pading</option>
-                                <option value="conform">Conform</option>
-                                <option value="shipping">Shipping</option>
-                              </select>
+                            <td  className="px-6 py-4 text-black">
+                            <select
+                              value={status}
+                              onChange={(e) =>
+                                handleStatusChange(p.id, e.target.value)
+                              }
+                            >
+                              <option value="">{p.status}</option>
+                              <option value="pending">Pending</option>
+                              <option value="confirmed">Confirmed</option>
+                              <option value="shipping">Shipping</option>
+                            </select>
                             </td>
 
                             <td className="px-6 py-4 text-black ">
