@@ -5,6 +5,7 @@ import {  db } from '../firebase/Firebase';
 import { useContext,  useState } from 'react';
 import MyContext from '../myContext/MyContext';
 import Modal from '../modal/Modal';
+import { toast } from 'react-toastify';
 // import Model from '../modal/Modal';
 // import CartCard from './CartCard';
 
@@ -91,8 +92,8 @@ function CartPage() {
   const deletecartitem = async (item)  => {
     const cartid = item.id;
    await deleteDoc(doc(db, `cart-${loggeduser[0].uid}`, cartid)).then(() => {
-      window.alert('Product removed from cart');
-    }).catch(() => window.alert("error"));
+      toast('Product removed from cart');
+    }).catch(() => toast("error"));
   }
 
   // const totalPrice = cartdata.reduce((total, item) => total + item.product.discountprice, 0);
@@ -113,7 +114,7 @@ function CartPage() {
 
   const productbuy = () => {
     if (name === "" || address == "" || pincode == "" || phoneNumber == "" || city == ""){
-      alert("Please fill all the fields")
+      toast("Please fill all the fields")
     }
 
     const customerInfo = {
@@ -141,14 +142,14 @@ function CartPage() {
             
           })
             .then(() => {
-              console.log('Product added to "buy" collection:');
+              toast('Product added to "buy" collection:');
             })
             .catch((error) => {
               console.error('Error adding product to "buy" collection:', error);
-              window.alert("Error occurred while buying the product");
+              toast("Error occurred while buying the product");
             });
         });
-        window.alert('Successfully bought all products');
+        toast('Successfully bought all products');
       } else {
         alert("Please login to buy");
       }

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import "./AddProducts.css";
 import { auth, db, storage } from "../firebase/Firebase";
+import { toast } from "react-toastify";
 
 const Addproducts = () => {
   const [producttitle, setProductTitle] = useState("");
@@ -64,16 +65,18 @@ const Addproducts = () => {
       } else {
         setProductImage(null);
         setImageError("please select a valid image file type(png or jpg)");
+        toast("Please select a valid image file type")
       }
     } else {
       setImageError("please select your file");
+      toast("please select your file")
     }
   };
 
   const handleAddProduct = (e) => {
     e.preventDefault();
     if(producttitle == "" || productimage == "" || discountprice == "" || producttype == "" || customersupport == "" || stock == ""){
-      return alert("plz fill all")
+      toast("plz fill all")
      }
     const storageRef = ref(
       storage,
@@ -104,6 +107,7 @@ const Addproducts = () => {
           })
             .then(() => {
               setSuccessMsg("Product added successfully");
+              toast("Product added successfully")
               setProductTitle("");
               setProductType("");
               setDescription("");

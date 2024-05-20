@@ -4,6 +4,7 @@ import { auth, db } from "../firebase/Firebase";
 import { useState } from "react";
 import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
 import { useEffect } from "react";
+import { toast } from "react-toastify";
 
 
 
@@ -21,7 +22,7 @@ function MyState(props) {
    const handleregister = async (e) => {
        e.preventDefault();
         if(email == "" || password == "" || username == "" || phonenumber == ""){
-         return alert("plz fill all")
+         toast("plz fill all")
         }
       
          await createUserWithEmailAndPassword(auth, email, password)
@@ -40,6 +41,7 @@ function MyState(props) {
                roll: "user",
            }).then(()=>{
                setSuccessmsg("Registered Successfully");
+               toast("Registered Successfully")
                setEmail('');
                setPassword('');
                setUsername('');
@@ -82,12 +84,13 @@ function MyState(props) {
     const handleLogin = async (e) => {
       e.preventDefault();
        if(email == "" || password == "" ){
-        return alert("plz fill all")
+        toast("plz fill all")
        }
        try {
         const userr = await signInWithEmailAndPassword(auth, email, password);
         // const users = localStorage.setItem('userr', JSON.stringify(userr));
         setSuccessmsg('Logged in seccessfully you will be redirected to ');
+        toast("Logged in seccessfully you will be redirected to")
         // console.log(userr)
         setEmail('');
         setErrormsg('')
@@ -101,6 +104,7 @@ function MyState(props) {
         if(error.message == 'Firebase: Error (auth/invalid-credential).')
         {
             setErrormsg("Incorrect email and password");
+            toast("Incorrect email and password")
             setTimeout(() => {
               setErrormsg("")
             }, 1000);

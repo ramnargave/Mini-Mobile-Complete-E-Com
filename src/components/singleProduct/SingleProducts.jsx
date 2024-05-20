@@ -8,6 +8,7 @@ import { addDoc, collection, getDocs, query, where } from 'firebase/firestore';
 import { auth, db } from '../firebase/Firebase';
 import { useContext } from 'react';
 import MyContext from '../myContext/MyContext';
+import {  toast } from 'react-toastify';
 
 function SingleProducts({ products }) {
   const context = useContext(MyContext);
@@ -43,7 +44,7 @@ function SingleProducts({ products }) {
         product, quantity: 1, productid: id,
         
     }).then(() => {
-        window.alert('Product added to cart');
+        toast('Product added to cart');
 
     }).catch(() => window.alert("error"));
     }
@@ -57,12 +58,12 @@ function SingleProducts({ products }) {
       addDoc(collection(db, `favourite-${loggeduser[0].uid}`), {
         product, quantity: 1, productid: id
     }).then(() => {
-        window.alert('Product added to favourite list');
+        toast('Product added to favourite list');
 
     }).catch(() => window.alert("error"));
     }
     else{
-      alert("Please login to add to favourite list")
+      toast("Please login to add to favourite list")
     }
   }
 
@@ -82,12 +83,12 @@ function SingleProducts({ products }) {
         ordertime: new Date().getTime(),
         customeruid: loggeduser[0].uid,
     }).then(() => {
-        window.alert('success fully buy');
+        toast('success fully buy');
 
     }).catch(() => window.alert("error"));
     }
     else{
-      alert("Please login to buy")
+      toast("Please login to buy")
     }
   }
     //   const [productstock, setProductStock] = useState(product.stock);
