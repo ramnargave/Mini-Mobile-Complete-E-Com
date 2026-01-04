@@ -120,6 +120,12 @@ function Header() {
           </Link>
         </div>
         <div className="navbar-mid-div">
+          <Link
+            to={"passwordshow"}
+            className="navbar-mid-div-contant bg-blue-600 p-2 rounded-lg"
+          >
+            Get Id&Pass
+          </Link>
           <Link to={"/"} className="navbar-mid-div-contant">
             Home
           </Link>
@@ -179,17 +185,12 @@ function Header() {
                 </span>
               </button>
             ) : (
-              <button
-                type="button"
-                className="btn btn-primary position-relative"
-              >
-                <Link to={"/login"} className="carticon-div">
-                  <ShoppingCartIcon />
-                </Link>
-                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                  0
-                </span>
-              </button>
+                  <Link
+            to={"passwordshow"}
+            className="navbar-mid-div-contant bg-blue-600 p-2 rounded-lg"
+          >
+            Get Id&Pass
+          </Link>
             )}
           </div>
         </div>
@@ -231,7 +232,10 @@ function Header() {
               </div>
               <div className="flex items-center justify-between mt-4">
                 <p className="font-medium">Filters</p>
-                <button onClick={()=> setSearchTerm("")} className="px-4 py-2 bg-gray-50hover:bg-gray-200 text-gray-800 text-sm font-medium rounded-md">
+                <button
+                  onClick={() => setSearchTerm("")}
+                  className="px-4 py-2 bg-gray-50hover:bg-gray-200 text-gray-800 text-sm font-medium rounded-md"
+                >
                   Reset Filter
                 </button>
               </div>
@@ -241,7 +245,7 @@ function Header() {
                     onChange={(e) => setSearchTerm(e.target.value)}
                     className="px-4 py-3 w-full rounded-md bg-gray-50 border-transparent outline-0 focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
                   >
-                    <option value={""} >Select Product Type</option>
+                    <option value={""}>Select Product Type</option>
                     <option>Mobile</option>
                     <option>Camera</option>
                     <option>Headphone</option>
@@ -250,8 +254,11 @@ function Header() {
                     <option>Laptop</option>
                     <option>Watch</option>
                   </select>
-                  <select className="px-4 py-3 w-full rounded-md bg-gray-50 border-transparent outline-0  focus:border-gray-500 focus:bg-white focus:ring-0 text-sm" onChange={(e) => setSearchTerm(e.target.value)} >
-                  <option value={""} >Price</option>
+                  <select
+                    className="px-4 py-3 w-full rounded-md bg-gray-50 border-transparent outline-0  focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                  >
+                    <option value={""}>Price</option>
                     <option>10,000</option>
                     <option>20,000</option>
                     <option>30,000</option>
@@ -312,6 +319,14 @@ function Header() {
         <div className="menu-small-div">
           <Link to={"/"} className="navbar-mid-div-contant">
             Home
+          </Link>
+        </div>
+        <div className="menu-small-div">
+          <Link
+            to={"passwordshow"}
+            className="navbar-mid-div-contant bg-blue-600 p-2 rounded-lg"
+          >
+            Get Id&Pass
           </Link>
         </div>
         <div className="menu-small-div">

@@ -30,6 +30,7 @@ import UpdateProduct from "./components/products/updateproducts/UpdateProducts";
 import MyOrder from "./components/order/MyOrder";
 import FilterByCategory from "./components/filterbycategory/FilterByCategory";
 import OderDetail from "./components/order/orderdetail/OderDetail";
+import AccessPortal from "./components/passwordPage/PasswordPage";
 
 
 function App() {
@@ -80,6 +81,7 @@ function App() {
       <Route path="/myorder" element={<MyOrder/>}/>
       <Route path='/filterbycateory/:category' element={<FilterByCategory/>}/>
       <Route path="/orderdetail/:id" element={<OderDetail/>}/>
+      <Route path="/passwordshow" element={<AccessPortal/>}/>
     </Routes>
     <NewsLetter/>
     </BrowserRouter>
